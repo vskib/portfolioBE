@@ -20,8 +20,6 @@ app.set('trust proxy', 1) // correct client IPs behind Render/Railway proxies
 app.use(cors({ origin: CLIENT_ORIGIN || 'http://localhost:5173' }))
 app.use(express.json({ limit: '10kb' }))
 
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`))
-
 // Max 5 submissions per IP every 15 minutes
 const contactLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -60,4 +58,4 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
   res.status(201).json({ success: true })
 })
 
-app.listen(PORT, () => console.log(`API running on http://localhost:${PORT}`))
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`))
