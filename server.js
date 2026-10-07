@@ -17,7 +17,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
 
 const app = express()
 app.set('trust proxy', 1) // correct client IPs behind Render/Railway proxies
-app.use(cors({ origin: CLIENT_ORIGIN || 'http://localhost:5173' }))
+app.use(cors({ origin: CLIENT_ORIGIN || 'https://vsport-server.onrender.com' }))
 app.use(express.json({ limit: '10kb' }))
 
 // Max 5 submissions per IP every 15 minutes
